@@ -29,8 +29,10 @@ public class Main {
             //1er menu :Menu d'authentication
             System.out.println("Menu d'authentification");
             System.out.println("(1) Se connecter");
-            System.out.println("(2) Quitter");
-            System.out.print("Choisissez votre choix : ");
+            System.out.println("(2) Voir notifications");
+            System.out.println("(3) Envoyer message");
+            System.out.println("(4) Quitter");
+            System.out.print("Saisissez votre choix : ");
 
             int choix = scanner.nextInt();
             scanner.nextLine();
@@ -46,7 +48,10 @@ public class Main {
                             System.out.println("(1) Creer un employes");
                             System.out.println("(2) Supprimer un employes");
                             System.out.println("(3) Lister un employes");
-                            System.out.println("(4) Quitter");
+                            System.out.println("(4) Envoyer message");
+                            System.out.println("(5) Voir Notification");
+                            System.out.println("(6) Quitter");
+                            System.out.print("Saisissez votre choix : ");
                             int choix2 = scanner.nextInt();
                             scanner.nextLine();
                             switch (choix2) {
@@ -106,6 +111,18 @@ public class Main {
                                             System.out.printf("%s %s (%s) - %s\n",emp.getNom(),emp.getPrenom(),emp.getEmail(), statut);
                                         }
                                         break;
+                                   /* case 4: //Envoyer message
+                                        System.out.println("Entrez le message à envoyer aux employés :");
+                                        String message = scanner.nextLine();
+                                        serviceNotification.notifierAbonner(Employe, message);
+                                        System.out.println("Message envoyé à tous les employés.");
+                                        break;
+                                        case 5:// Voir notifications
+                                            for (Employe emp : employes) {
+                                                emp.afficherNotifications();
+                                                System.out.println("-------------------------");
+                                            }
+                                            break;*/
 
 
                             }

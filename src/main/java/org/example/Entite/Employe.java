@@ -2,13 +2,17 @@ package org.example.Entite;
 
 import org.example.Utilitaire.ServiceEmail;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Employe implements Observer {
     private String nom;
     private String prenom;
     private String email;
     private String password;
     private String telephone;
-    private Boolean status;
+    private boolean status;
+    private List<String> notifications;
 
     public Employe(String nom, String prenom, String email, String password, String telephone, Boolean status) {
         this.nom = nom;
@@ -17,7 +21,11 @@ public class Employe implements Observer {
         this.password = password;
         this.telephone = telephone;
         this.status = status;
+        this.notifications = new ArrayList<>();
     }
+   /* public void recevoirNotification(String message) {
+     *   notifications.add(message);
+     }*/
 
     public String getNom() {
         return nom;
@@ -65,6 +73,14 @@ public class Employe implements Observer {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public List<String> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<String> notifications) {
+        this.notifications = notifications;
     }
 
     @Override
