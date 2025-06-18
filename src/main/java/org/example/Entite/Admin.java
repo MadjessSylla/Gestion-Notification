@@ -1,27 +1,12 @@
 package org.example.Entite;
 
-public class Admin {
-    private String email;
-    private String password;
-
+public class Admin extends Employe implements Observer {
     public Admin(String email, String password) {
-        this.email = email;
-        this.password = password;
+        super("Admin", "System", email, password, "00000000", true);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public void envoyer(String message, Employe expediteur) {
+        // Implémentation spécifique pour l'admin si nécessaire
     }
 }

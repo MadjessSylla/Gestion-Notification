@@ -6,12 +6,14 @@ import org.example.Entite.Observer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationService implements Diffuseur{
-    private List<Observer> abonnes = new ArrayList<Observer>();
+public class NotificationService implements Diffuseur {
+    private List<Observer> abonnes = new ArrayList<>();
 
     @Override
-    public void  abonner(Observer observer) {
-        abonnes.add(observer);
+    public void abonner(Observer observer) {
+        if (!abonnes.contains(observer)) {
+            abonnes.add(observer);
+        }
     }
 
     @Override
@@ -21,8 +23,10 @@ public class NotificationService implements Diffuseur{
 
     @Override
     public void notifierAbonner(Observer expediteur, String message) {
-     for (Observer observer : abonnes) {
-         observer.envoyer(message, (Employe) expediteur);
-     }
+        for (Observer observer : abonnes) {
+            if (observer != expediteur) { // Ne pas notifier l'expéditeur
+                observer.envoyer(message, (Employe) expediteur);
+            }
+        }
     }
 }

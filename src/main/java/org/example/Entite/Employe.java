@@ -23,10 +23,16 @@ public class Employe implements Observer {
         this.status = status;
         this.notifications = new ArrayList<>();
     }
-   /* public void recevoirNotification(String message) {
-     *   notifications.add(message);
-     }*/
-
+    public void afficherNotifications() {
+        System.out.println("Notifications pour " + prenom + " " + nom + ":");
+        if (notifications.isEmpty()) {
+            System.out.println("Aucune notification.");
+        } else {
+            for (String notification : notifications) {
+                System.out.println("- " + notification);
+            }
+        }
+    }
     public String getNom() {
         return nom;
     }
@@ -85,6 +91,8 @@ public class Employe implements Observer {
 
     @Override
     public void envoyer(String message, Employe expediteur) {
+        String notification = "Message de " + expediteur.getNom() + " " + expediteur.getPrenom() + ": " + message;
+        notifications.add(notification);
         System.out.println("Nouveau message de: " + expediteur.getNom() + " " + expediteur.getPrenom());
         System.out.println("contenu: "+message);
         ServiceEmail.envoyerEmail(this.email,"notification",message);
